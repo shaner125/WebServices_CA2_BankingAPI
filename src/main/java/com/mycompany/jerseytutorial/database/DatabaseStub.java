@@ -65,25 +65,17 @@ public class DatabaseStub {
              ac5.add(a5);
              
              Customer c1 = new Customer (1, "Shane", "32 Tyrone House", "Shane.Ryan@student.ncirl.ie", "password123", ac1);
-             Customer c2 = new Customer (2, "Graeme", "123 Grove Lane", "Shane.Ryan@student.ncirl.ie", "password123", ac1);
-             Customer c3 = new Customer (3, "James", "49 Evergreen Terrace", "Shane.Ryan@student.ncirl.ie", "password123", ac1);
-             Customer c4 = new Customer (4, "Adam", "299 Vicker Street", "Shane.Ryan@student.ncirl.ie", "password123", ac1);
-             Customer c5 = new Customer (5, "Paul", "114 O'Connell Drive", "Shane.Ryan@student.ncirl.ie", "password123", ac1);
+             Customer c2 = new Customer (2, "Graeme", "123 Grove Lane", "Graeme.Doherty@student.ncirl.ie", "abc123", ac2);
+             Customer c3 = new Customer (3, "James", "49 Evergreen Terrace", "James.Curran@student.ncirl.ie", "newpassword123", ac3);
+             Customer c4 = new Customer (4, "Adam", "299 Vicker Street", "Adam.Grimbly@student.ncirl.ie", "thisisapassword123", ac4);
+             Customer c5 = new Customer (5, "Paul", "114 O'Connell Drive", "Paul.Schmibly@student.ncirl.ie", "easypassword123", ac5);
              
              customerList.add(c1);
              customerList.add(c2);
              customerList.add(c3);
              customerList.add(c4);
              customerList.add(c5);
-             
-             	Transaction openingTransaction = new Transaction (Transaction.TransactionType.LODGEMENT, 0.00, ""+new Date(),"Opening account" );
-                List<Transaction> openingTransactionList = new ArrayList();
-                openingTransactionList.add(openingTransaction);
-                Account newAccount = new Account ((int)(Math.random() * 100001), (int)(Math.random() * 10001), 0.00,openingTransactionList);
-                List<Account> openingAccountList = new ArrayList();
-                openingAccountList.add(newAccount);
-                Customer newCustomer = new Customer (DatabaseStub.customerList.size()+1, "", "", "", "", openingAccountList);
-             
+             System.out.println("testprint2");
         init = false;
      }
     

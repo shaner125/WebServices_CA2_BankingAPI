@@ -20,6 +20,8 @@ import java.util.List;
  * @author shane
  */
 public class CustomerService {
+    
+        DatabaseStub databaseStub = new DatabaseStub();
 
         public Customer createCustomer(String name, String address, String email, String password) {
             
@@ -33,4 +35,14 @@ public class CustomerService {
             
         return tmpCustomer;
         }
+        
+        public List<Customer> getAllCustomers(){
+            System.out.println("testprint1");
+            return databaseStub.customerList;
+        }
+        
+//        public Customer getCustomer(int cId){
+//            Customer tmpCusomer;
+//            return tmpCustomer;
+//        }
 }
