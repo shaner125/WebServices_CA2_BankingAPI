@@ -15,9 +15,13 @@ import java.util.List;
  * @author shane
  */
 public class AccountService extends CustomerService {
-    public List<Customer> cList = DatabaseStub.customerList;
+
+    public AccountService() {
+        super(database);
+    }
     
     public List<Account> getAllAccounts(int cId){
+        List<Customer> cList = database.customerList;
         System.out.println("getting accounts"+cId);
         return cList.get(cId).getAccounts();
     }

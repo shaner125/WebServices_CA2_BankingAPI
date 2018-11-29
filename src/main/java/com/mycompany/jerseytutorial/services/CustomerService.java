@@ -17,7 +17,13 @@ import java.util.List;
  */
 public class CustomerService {
     
-        public static DatabaseStub database = new DatabaseStub();
+    public static DatabaseStub database;
+
+    public CustomerService(DatabaseStub database) {
+        this.database = database;
+    }
+        
+        
         
 //        public Customer createCustomer(String name, String address, String email, String password) {
 //            
@@ -32,13 +38,13 @@ public class CustomerService {
 //        return tmpCustomer;
 //        }
         
-        public List<Customer> getAllCustomers(){
-            return database.customerList;
-        }
-        
-        public Customer getCustomer(int cId){
-            return database.customerList.get(cId-1);
-        }
+    public List<Customer> getAllCustomers(){
+        return database.customerList;
+    }
+
+    public Customer getCustomer(int cId){
+        return database.customerList.get(cId-1);
+    }
 
     public static DatabaseStub getDatabase() {
         return database;

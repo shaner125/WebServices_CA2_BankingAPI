@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.jerseytutorial.resources;
+import com.mycompany.jerseytutorial.database.DatabaseStub;
 import com.mycompany.jerseytutorial.model.Customer;
 import com.mycompany.jerseytutorial.model.Account;
 import com.mycompany.jerseytutorial.model.Transaction;
@@ -14,25 +15,26 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.QueryParam;
 /**
  *
  * @author shane
  */
-
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-public class AccountResource{
-
-    AccountService accountService = new AccountService();
+public class AccountResource{ 
     
-       @GET
-       @Path("/{customerId}")
-       public List<Account> getAccounts(@PathParam("customerId") int cId) {
-       System.out.print("22222222222");
-       return accountService.getAllAccounts(cId);
+    int customerId;
+
+    public AccountResource(int customerId) {
+        this.customerId = customerId;
+    }
+    
+    
+    @GET
+    @Path("{customerId}")
+    public List<Account> getAccounts(@PathParam("customerId") int cId) {
+        System.out.println("t2");
+        AccountService accountService = new AccountService();
+        System.out.print("22222222222");
+        return accountService.getAllAccounts(cId);
    }
     
 }
