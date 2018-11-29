@@ -81,6 +81,17 @@ public class DatabaseStub {
     
 
     }
+
+    public static List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public static void setCustomerList(List<Customer> customerList) {
+        DatabaseStub.customerList = customerList;
+    }
+
+
+
         public static Customer generateNewCustomer(){
         Transaction openingTransaction = new Transaction (Transaction.TransactionType.LODGEMENT, 0.00, ""+new Date(),"Opening account" );
                 List<Transaction> openingTransactionList = new ArrayList();

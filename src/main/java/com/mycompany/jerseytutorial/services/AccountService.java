@@ -14,17 +14,23 @@ import java.util.List;
  *
  * @author shane
  */
-public class AccountService {
+public class AccountService extends CustomerService {
+    public List<Customer> cList = DatabaseStub.customerList;
     
-        public Account createAccount(int cId, Account a) {
-	for (Customer customer : DatabaseStub.customerList){
-            if(customer.getCustomerID() == cId){
-                List<Account> tmpAList = customer.getAccounts();
-                tmpAList.add(a);
-                customer.setAccounts(tmpAList);
-                System.out.println("New account "+a.getAccountNumber()+" has been created for customer "+customer.getName());
-            }
-        }
-	return a;
+    public List<Account> getAllAccounts(int cId){
+        System.out.println("getting accounts"+cId);
+        return cList.get(cId).getAccounts();
     }
+    
+//        public Account createAccount(int cId, Account a) {
+//	for (Customer customer : DatabaseStub.customerList){
+//            if(customer.getCustomerID() == cId){
+//                List<Account> tmpAList = customer.getAccounts();
+//                tmpAList.add(a);
+//                customer.setAccounts(tmpAList);
+//                System.out.println("New account "+a.getAccountNumber()+" has been created for customer "+customer.getName());
+//            }
+//        }
+//	return a;
+//    }
 }

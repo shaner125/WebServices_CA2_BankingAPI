@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.jerseytutorial.resources;
+import com.mycompany.jerseytutorial.resources.AccountResource;
 import com.mycompany.jerseytutorial.model.Customer;
 import com.mycompany.jerseytutorial.model.Account;
 import com.mycompany.jerseytutorial.model.Transaction;
@@ -31,16 +32,22 @@ public class CustomerResource {
 
     CustomerService customerService = new CustomerService();
     
-   @GET
-   public List<Customer> getAllCustomers(){
-       return customerService.getAllCustomers();
-   }
+        @GET
+        public List<Customer> getAllCustomers(){
+            return customerService.getAllCustomers();
+        }
     
     
-//   @GET
-//   @Path("/{customer}")
-//   public Customer getFlight(@PathParam("customer") int id) {
-//       return CustomerService.getCustomer(id);
-//   }
+        @GET
+        @Path("/{customerId}")
+        public Customer getCustomer(@PathParam("customerId") int cId) {
+            return customerService.getCustomer(cId);
+        }
+   
+        @GET
+        @Path("/{customerId}/accounts")
+        public AccountResource getAccountsResource() {
+        return new AccountResource();
+        }
     
 }

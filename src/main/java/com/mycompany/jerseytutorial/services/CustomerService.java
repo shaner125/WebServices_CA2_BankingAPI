@@ -5,14 +5,10 @@
  */
 package com.mycompany.jerseytutorial.services;
 import com.mycompany.jerseytutorial.model.Customer;
-import com.mycompany.jerseytutorial.model.Account;
-import com.mycompany.jerseytutorial.model.Transaction;
 import com.mycompany.jerseytutorial.database.DatabaseStub;
 
 
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,28 +17,36 @@ import java.util.List;
  */
 public class CustomerService {
     
-        DatabaseStub databaseStub = new DatabaseStub();
-
-        public Customer createCustomer(String name, String address, String email, String password) {
-            
-        Customer tmpCustomer = DatabaseStub.generateNewCustomer();
-        tmpCustomer.setName(name);
-        tmpCustomer.setAddress(address);
-        tmpCustomer.setEmail(email);
-        tmpCustomer.setPassword(password);
+        public static DatabaseStub database = new DatabaseStub();
         
-        DatabaseStub.customerList.add(tmpCustomer);
-            
-        return tmpCustomer;
-        }
+//        public Customer createCustomer(String name, String address, String email, String password) {
+//            
+//        Customer tmpCustomer = DatabaseStub.generateNewCustomer();
+//        tmpCustomer.setName(name);
+//        tmpCustomer.setAddress(address);
+//        tmpCustomer.setEmail(email);
+//        tmpCustomer.setPassword(password);
+//        
+//        DatabaseStub.customerList.add(tmpCustomer);
+//            
+//        return tmpCustomer;
+//        }
         
         public List<Customer> getAllCustomers(){
-            System.out.println("testprint1");
-            return databaseStub.customerList;
+            return database.customerList;
         }
         
-//        public Customer getCustomer(int cId){
-//            Customer tmpCusomer;
-//            return tmpCustomer;
-//        }
+        public Customer getCustomer(int cId){
+            return database.customerList.get(cId-1);
+        }
+
+    public static DatabaseStub getDatabase() {
+        return database;
+    }
+
+    public static void setDatabase(DatabaseStub database) {
+        CustomerService.database = database;
+    }
+        
+       
 }
