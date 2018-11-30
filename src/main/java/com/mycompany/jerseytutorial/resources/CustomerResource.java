@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.jerseytutorial.resources;
+import com.mycompany.jerseytutorial.database.DatabaseStub;
 import com.mycompany.jerseytutorial.resources.AccountResource;
 import com.mycompany.jerseytutorial.model.Customer;
 import com.mycompany.jerseytutorial.model.Account;
@@ -23,31 +24,28 @@ import javax.ws.rs.QueryParam;
  * @author shane
  */
 @Path("/customers")
-//@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-//@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
 public class CustomerResource {
     
+    public static DatabaseStub database = new DatabaseStub();
+    CustomerService customerService = new CustomerService(database);
+    
+    @GET
+    public List<Customer> getAllCustomers(){
+        return customerService.getAllCustomers();
+    }
 
-    CustomerService customerService = new CustomerService();
-    
-        @GET
-        public List<Customer> getAllCustomers(){
-            return customerService.getAllCustomers();
-        }
-    
-    
-        @GET
-        @Path("/{customerId}")
-        public Customer getCustomer(@PathParam("customerId") int cId) {
-            return customerService.getCustomer(cId);
-        }
-   
-        @GET
-        @Path("/{customerId}/accounts")
-        public AccountResource getAccountsResource() {
-        return new AccountResource();
-        }
+
+    @GET
+    @Path("/{customerId}")
+    public Customer getCustomer(@PathParam("customerId") int cId) {
+        return customerService.getCustomer(cId);
+    }
+
+ 
+    @Path("/{id}/accounts")
+    public AccountResource getAccountsResource(@PathParam("id") int customerId) {
+        System.out.println("t");
+        return new AccountResource(customerId);
+    }
     
 }
