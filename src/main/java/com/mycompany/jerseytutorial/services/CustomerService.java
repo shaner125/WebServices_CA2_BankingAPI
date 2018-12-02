@@ -19,19 +19,11 @@ public class CustomerService {
     
         private static DatabaseStub database = new DatabaseStub();
         public static List<Customer> cList = database.getCustomerList();
-        
-//        public Customer createCustomer(String name, String address, String email, String password) {
-//            
-//        Customer tmpCustomer = DatabaseStub.generateNewCustomer();
-//        tmpCustomer.setName(name);
-//        tmpCustomer.setAddress(address);
-//        tmpCustomer.setEmail(email);
-//        tmpCustomer.setPassword(password);
-//        
-//        DatabaseStub.customerList.add(tmpCustomer);
-//            
-//        return tmpCustomer;
-//        }
+         
+        public Customer createCustomer(Customer customer){
+            cList.add(customer);
+            return customer;
+        }
         
         public List<Customer> getAllCustomers(){
             return cList;

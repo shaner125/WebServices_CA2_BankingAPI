@@ -9,6 +9,7 @@ import com.mycompany.jerseytutorial.services.CustomerService;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -30,7 +31,12 @@ public class CustomerResource {
         public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
         }
-    
+        
+        @POST
+        @Path("/create")
+        public Customer createCustomer(Customer customer){
+            return customerService.createCustomer(customer);
+        }
     
         @GET
         @Path("/{customerId}")
