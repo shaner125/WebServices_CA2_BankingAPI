@@ -4,13 +4,9 @@
  * and open the template in the editor.
  */
 package com.mycompany.jerseytutorial.resources;
-import com.mycompany.jerseytutorial.model.Customer;
-import com.mycompany.jerseytutorial.model.Account;
 import com.mycompany.jerseytutorial.model.Transaction;
 import com.mycompany.jerseytutorial.services.TransactionService;
-import java.util.List;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -31,21 +27,23 @@ public class TransactionResource{
         @POST
         public Transaction makeTransaction(@PathParam("customerId") int cid,
                                            @PathParam("accountId") int aid, 
-                                           @QueryParam("lodge") String lodge,   
-                                           @QueryParam("withdraw") String withdraw, 
-                                           @QueryParam("transfer") String transfer,
+                                           @QueryParam("type") String type,   
                                            @QueryParam("recipientId") int recipientId,
                                            Transaction t) {
-            System.out.println("making transaction...index : "+cid+" , accountIndex: "+aid);
-       if ((lodge != null)) {
-       return transactionService.makeLodgement(cid, aid, t);
-       }
-       else if ((withdraw != null)) {
-       return transactionService.makeWithdrawel(cid, aid, t);
-       }
-       else if ((transfer != null)){
-       return transactionService.makeTransfer(cid, aid, recipientId,t);
-       }
+            System.out.println("making transaction...index : "+cid+" , accountIndex: "+aid+" ,"+type);
+       if (null != type) switch (type) {
+            case "lodge":
+                System.out.println("lodging");
+                return transactionService.makeLodgement(cid, aid, t);
+            case "withdraw":
+                System.out.println("withdrawing");
+                return transactionService.makeWithdrawel(cid, aid, t);
+            case "transfer":
+                System.out.println("transferring");
+                return transactionService.makeTransfer(cid, aid, recipientId,t);
+            default:
+                break;
+        }
        return t;
    } 
 

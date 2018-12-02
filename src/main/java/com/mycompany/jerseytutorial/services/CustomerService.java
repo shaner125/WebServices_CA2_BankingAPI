@@ -42,9 +42,7 @@ public class CustomerService {
         }   
         public static void updateCustomer(int cid, Customer customer){
         System.out.println("updating customer.."+customer.getName());
-//        cList.remove(cid-1);
         cList.set(cid-1, customer);
-        System.out.println(cList.get(cList.size()-1).getName()+cList.get(cList.size()-1).getAccounts().get(0).getTransactions());
     }
 
 }
