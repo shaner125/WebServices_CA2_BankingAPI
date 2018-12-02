@@ -34,7 +34,7 @@ public class CustomerResource {
     
         @GET
         public List<Customer> getAllCustomers(){
-            return customerService.getAllCustomers();
+        return customerService.getAllCustomers();
         }
     
     
@@ -44,9 +44,10 @@ public class CustomerResource {
             return customerService.getCustomer(cId);
         }
    
-        @GET
+   
         @Path("/{customerId}/accounts")
         public AccountResource getAccountsResource() {
+        System.out.println("getting Accounts Resource");
         return new AccountResource();
         }
     

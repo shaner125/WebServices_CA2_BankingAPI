@@ -29,6 +29,7 @@ public class Transaction {
         this.description = description;
     }
 
+
     public TransactionType getTransactionType() {
         return transactionType;
     }

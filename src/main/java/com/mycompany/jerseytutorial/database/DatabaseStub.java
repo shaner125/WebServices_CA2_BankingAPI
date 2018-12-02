@@ -22,18 +22,18 @@ import java.util.logging.Logger;
  * @author shane
  */
 public class DatabaseStub {
-    public static List<Customer> customerList = new ArrayList<>();
-    public static List<Account> ac1 = new ArrayList<>();
-    public static List<Account> ac2 = new ArrayList<>();
-    public static List<Account> ac3 = new ArrayList<>();
-    public static List<Account> ac4 = new ArrayList<>();
-    public static List<Account> ac5 = new ArrayList<>();
-    public static List<Transaction> a1Transactions = new ArrayList<>();
-    public static List<Transaction> a2Transactions = new ArrayList<>();
-    public static List<Transaction> a3Transactions = new ArrayList<>();
-    public static List<Transaction> a4Transactions = new ArrayList<>();
-    public static List<Transaction> a5Transactions = new ArrayList<>();
-    public static boolean init = true;
+    private static List<Customer> customerList = new ArrayList<>();
+    private static List<Account> ac1 = new ArrayList<>();
+    private static List<Account> ac2 = new ArrayList<>();
+    private static List<Account> ac3 = new ArrayList<>();
+    private static List<Account> ac4 = new ArrayList<>();
+    private static List<Account> ac5 = new ArrayList<>();
+    private static List<Transaction> a1Transactions = new ArrayList<>();
+    private static List<Transaction> a2Transactions = new ArrayList<>();
+    private static List<Transaction> a3Transactions = new ArrayList<>();
+    private static List<Transaction> a4Transactions = new ArrayList<>();
+    private static List<Transaction> a5Transactions = new ArrayList<>();
+    private static boolean init = true;
     
     public DatabaseStub(){
     
@@ -86,20 +86,14 @@ public class DatabaseStub {
         return customerList;
     }
 
-    public static void setCustomerList(List<Customer> customerList) {
-        DatabaseStub.customerList = customerList;
-    }
-
-
-
-        public static Customer generateNewCustomer(){
-        Transaction openingTransaction = new Transaction (Transaction.TransactionType.LODGEMENT, 0.00, ""+new Date(),"Opening account" );
-                List<Transaction> openingTransactionList = new ArrayList();
-                openingTransactionList.add(openingTransaction);
-                Account newAccount = new Account ((int)(Math.random() * 100001), (int)(Math.random() * 10001), 0.00,openingTransactionList);
-                List<Account> openingAccountList = new ArrayList();
-                openingAccountList.add(newAccount);
-                Customer newCustomer = new Customer (DatabaseStub.customerList.size()+1, "", "", "", "", openingAccountList);
-                return newCustomer;
-    }
+//        public static Customer generateNewCustomer(){
+//        Transaction openingTransaction = new Transaction (Transaction.TransactionType.LODGEMENT, 0.00, ""+new Date(),"Opening account" );
+//                List<Transaction> openingTransactionList = new ArrayList();
+//                openingTransactionList.add(openingTransaction);
+//                Account newAccount = new Account ((int)(Math.random() * 100001), (int)(Math.random() * 10001), 0.00,openingTransactionList);
+//                List<Account> openingAccountList = new ArrayList();
+//                openingAccountList.add(newAccount);
+//                Customer newCustomer = new Customer (DatabaseStub.customerList.size()+1, "", "", "", "", openingAccountList);
+//                return newCustomer;
+//    }
 }

@@ -17,7 +17,8 @@ import java.util.List;
  */
 public class CustomerService {
     
-        public static DatabaseStub database = new DatabaseStub();
+        DatabaseStub database = new DatabaseStub();
+        private List<Customer> cList = database.getCustomerList();
         
 //        public Customer createCustomer(String name, String address, String email, String password) {
 //            
@@ -33,20 +34,10 @@ public class CustomerService {
 //        }
         
         public List<Customer> getAllCustomers(){
-            return database.customerList;
+            return cList;
         }
         
         public Customer getCustomer(int cId){
-            return database.customerList.get(cId-1);
-        }
-
-    public static DatabaseStub getDatabase() {
-        return database;
-    }
-
-    public static void setDatabase(DatabaseStub database) {
-        CustomerService.database = database;
-    }
-        
-       
+            return cList.get(cId-1);
+        }   
 }

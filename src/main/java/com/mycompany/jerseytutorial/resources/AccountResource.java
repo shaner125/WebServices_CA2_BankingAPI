@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 package com.mycompany.jerseytutorial.resources;
-import com.mycompany.jerseytutorial.model.Customer;
-import com.mycompany.jerseytutorial.model.Account;
-import com.mycompany.jerseytutorial.model.Transaction;
 import com.mycompany.jerseytutorial.services.AccountService;
+import com.mycompany.jerseytutorial.model.Account;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -21,18 +19,42 @@ import javax.ws.rs.QueryParam;
  *
  * @author shane
  */
-
+@Path("/accounts")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class AccountResource{
 
-    AccountService accountService = new AccountService();
+    private AccountService accountService = new AccountService();
     
-       @GET
-       @Path("/{customerId}")
-       public List<Account> getAccounts(@PathParam("customerId") int cId) {
-       System.out.print("22222222222");
-       return accountService.getAllAccounts(cId);
-   }
+       
+        @GET
+	public List<Account> getAccounts(@PathParam("customerId") int cid) {
+    	System.out.println("getAllAccountsForCustomer..."+cid);
+        return accountService.getAllAccounts(cid);
+	}
+        
+        @GET
+        @Path("/{accountId}")
+        public Account getAccount(@PathParam("customerId") int cid, @PathParam("accountId") int aId) {
+        return accountService.getAccount(cid, aId);
+        }
+        
+        @POST
+        @Path("/create")
+        public Account postAccount(@PathParam("customerId") int cid, Account a) {
+	return accountService.createAccount(cid, a);
+        }        
+        
+        @Path("/{accountId}/transactions")
+        public AccountResource getAccountsResource() {
+        System.out.println("getting Accounts Resource");
+        return new AccountResource();
+        }
+        
+        @Path("/transactions")
+        public TransactionResource getTransactionResource() {
+        System.out.println("getting Transaction Resource");
+        return new TransactionResource();
+        }
     
 }

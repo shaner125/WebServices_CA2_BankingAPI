@@ -7,30 +7,39 @@ package com.mycompany.jerseytutorial.services;
 import com.mycompany.jerseytutorial.database.DatabaseStub;
 import com.mycompany.jerseytutorial.model.Customer;
 import com.mycompany.jerseytutorial.model.Account;
-import com.mycompany.jerseytutorial.model.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 /**
  *
  * @author shane
  */
-public class AccountService extends CustomerService {
-    public List<Customer> cList = DatabaseStub.customerList;
-    
-    public List<Account> getAllAccounts(int cId){
-        System.out.println("getting accounts"+cId);
-        return cList.get(cId).getAccounts();
+public class AccountService {
+    private List<Customer> cList = new DatabaseStub().getCustomerList();
+ 
+    public List<Account> getAllAccounts(int cid){
+        System.out.println("getting accounts");
+        System.out.println("getting accounts");
+        return cList.get(cid-1).getAccounts();
     }
     
-//        public Account createAccount(int cId, Account a) {
-//	for (Customer customer : DatabaseStub.customerList){
-//            if(customer.getCustomerID() == cId){
-//                List<Account> tmpAList = customer.getAccounts();
-//                tmpAList.add(a);
-//                customer.setAccounts(tmpAList);
-//                System.out.println("New account "+a.getAccountNumber()+" has been created for customer "+customer.getName());
-//            }
-//        }
-//	return a;
-//    }
-}
+    public Account getAccount(int cId, int aId){
+        List<Account> tmpList = cList.get(cId-1).getAccounts();
+        return tmpList.get(aId-1);
+    }
+    
+        public Account createAccount(int cId, Account a) {
+            System.out.println("attempting to create account...");
+            List<Account> newList = new ArrayList();
+            for (int i = 0; i<cList.size()-1; i++){
+            if(cList.get(i).getCustomerID() == cId){
+                List<Account> tmpAList = cList.get(i).getAccounts();
+                tmpAList.add(a);
+                cList.get(i).setAccounts(tmpAList);
+            }
+        }
+            System.out.println("Account created"+a.getAccountNumber());
+            return a;
+            
+        }
+    }
+

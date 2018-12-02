@@ -4,11 +4,31 @@
  * and open the template in the editor.
  */
 package com.mycompany.jerseytutorial.services;
-
+import com.mycompany.jerseytutorial.database.DatabaseStub;
+import com.mycompany.jerseytutorial.model.Customer;
+import com.mycompany.jerseytutorial.model.Account;
+import com.mycompany.jerseytutorial.model.Transaction;
+import com.mycompany.jerseytutorial.resources.CustomerResource;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author shane
  */
 public class TransactionService {
+    private List<Customer> cList = new DatabaseStub().getCustomerList();
+ 
+    public Transaction makeLodgement(int cid, int aid, Transaction t){
+        return t;
+    }
     
-}
+    public Transaction makeWithdrawel(int cid, int aid, Transaction t){
+        return t;
+    }
+    
+    public Transaction makeTransfer(int cid, int aid,int recipient, Transaction t){
+        return t;
+    }
+    
+    }
+
