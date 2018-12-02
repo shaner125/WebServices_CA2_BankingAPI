@@ -21,7 +21,7 @@ import javax.ws.rs.QueryParam;
  *
  * @author shane
  */
-@Path("/transactions")
+@Path("/transaction")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class TransactionResource{
@@ -29,7 +29,6 @@ public class TransactionResource{
     private TransactionService transactionService = new TransactionService();
        
         @POST
-        @Path("/transaction")
         public Transaction makeTransaction(@PathParam("customerId") int cid,
                                            @PathParam("accountId") int aid, 
                                            @QueryParam("lodge") String lodge,   
@@ -37,6 +36,7 @@ public class TransactionResource{
                                            @QueryParam("transfer") String transfer,
                                            @QueryParam("recipientId") int recipientId,
                                            Transaction t) {
+            System.out.println("making transaction...index : "+cid+" , accountIndex: "+aid);
        if ((lodge != null)) {
        return transactionService.makeLodgement(cid, aid, t);
        }

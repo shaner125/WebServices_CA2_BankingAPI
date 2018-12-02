@@ -81,8 +81,7 @@ public class Customer {
     public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
-        
-        
+    
 }
 
 

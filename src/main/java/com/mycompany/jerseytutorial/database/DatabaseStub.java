@@ -86,6 +86,12 @@ public class DatabaseStub {
         return customerList;
     }
 
+    public static void updateCustomer(int cid, Customer customer){
+        System.out.println("updating customer..");
+        customerList.remove(cid-1);
+        customerList.add(customer);
+    }
+    
 //        public static Customer generateNewCustomer(){
 //        Transaction openingTransaction = new Transaction (Transaction.TransactionType.LODGEMENT, 0.00, ""+new Date(),"Opening account" );
 //                List<Transaction> openingTransactionList = new ArrayList();

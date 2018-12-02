@@ -45,13 +45,7 @@ public class AccountResource{
 	return accountService.createAccount(cid, a);
         }        
         
-        @Path("/{accountId}/transactions")
-        public AccountResource getAccountsResource() {
-        System.out.println("getting Accounts Resource");
-        return new AccountResource();
-        }
-        
-        @Path("/transactions")
+        @Path("/{accountId}/transaction")
         public TransactionResource getTransactionResource() {
         System.out.println("getting Transaction Resource");
         return new TransactionResource();
