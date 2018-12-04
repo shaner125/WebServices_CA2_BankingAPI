@@ -13,6 +13,7 @@ import java.util.List;
 
 public class Account {
     
+    // data members
     private int accountNumber;
     private int sortCode;
     private double currentBalance;
@@ -20,14 +21,16 @@ public class Account {
 
     public Account() {
     }
-
+    
+    //constructor
     public Account(int accountNumber, int sortCode, double currentBalance, List<Transaction> transactions) {
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
         this.currentBalance = currentBalance;
         this.transactions = transactions;
     }
-
+    
+    //getters and setters
     public int getAccountNumber() {
         return accountNumber;
     }

@@ -14,30 +14,45 @@ import java.util.List;
  * @author shane
  */
 public class TransactionService {
-    private List<Customer> cList = new DatabaseStub().getCustomerList();
+    private List<Customer> cList = DatabaseStub.getCustomerList();
  
+    //method to lodge transaction to customer account by account number
     public Transaction makeLodgement(int cid, int aid, Transaction t){
-        Customer tmpCustomer = cList.get(cid-1);
-        Account tmpAccount = tmpCustomer.getAccounts().get(aid-1);
-        tmpAccount.setCurrentBalance(tmpAccount.getCurrentBalance() + t.getAmount());
-        tmpCustomer.getAccounts().get(aid-1).getTransactions().add(t);
-        CustomerService.updateCustomer(cid, tmpCustomer);
-        return t;
+        List<Account> tmpList = cList.get(cid-1).getAccounts();
+//        return tmpList.get(aId-1);
+          for (Account account : tmpList){
+              if(account.getAccountNumber() == aid){
+                  double tmpBalance = account.getCurrentBalance() + t.getAmount();
+                  account.setCurrentBalance(tmpBalance);
+                  account.getTransactions().add(t);
+                  t.setPostBalance(tmpBalance);
+                  return t;
+              }
+          }
+        return null;
     }
     
+    //method to withdraw transaction from account by account number
     public Transaction makeWithdrawel(int cid, int aid, Transaction t){
-        Customer tmpCustomer = cList.get(cid-1);
-        Account tmpAccount = tmpCustomer.getAccounts().get(aid-1);
-        tmpAccount.setCurrentBalance(tmpAccount.getCurrentBalance() - t.getAmount());
-        tmpCustomer.getAccounts().get(aid-1).getTransactions().add(t);
-        CustomerService.updateCustomer(cid, tmpCustomer);
-        return t;
+        List<Account> tmpList = cList.get(cid-1).getAccounts();
+//        return tmpList.get(aId-1);
+          for (Account account : tmpList){
+              if(account.getAccountNumber() == aid){
+                  double tmpBalance = account.getCurrentBalance() - t.getAmount();
+                  account.setCurrentBalance(tmpBalance);
+                  account.getTransactions().add(t);
+                  t.setPostBalance(tmpBalance);
+                  return t;
+              }
+          }
+        return null;
     }
     
-    public Transaction makeTransfer(int cid, int aid,int recipient, Transaction t){
-        System.out.println(recipient);
-        makeLodgement(recipient,aid,t);
+    //method to withdraw transaction from customer account and lodge to recipient account
+    public Transaction makeTransfer(int cid, int aid,int recipientCustId, int recipientAccId, Transaction t){
+        System.out.println("Transferring "+t.getAmount()+" from "+cid+": "+aid+" to: "+recipientCustId + " :"+recipientAccId);
         makeWithdrawel(cid,aid,t);
+        makeLodgement(recipientCustId,recipientAccId,t);
         return t;
     }
     

@@ -17,21 +17,36 @@ import java.util.List;
  */
 public class CustomerService {
     
-        private static DatabaseStub database = new DatabaseStub();
-        public static List<Customer> cList = database.getCustomerList();
+        private static final DatabaseStub database = new DatabaseStub();
+        public static List<Customer> cList = DatabaseStub.getCustomerList();
          
+        //method to create new customer
         public Customer createCustomer(Customer customer){
             cList.add(customer);
             return customer;
         }
         
+        //method to retrieve all bank customers
         public List<Customer> getAllCustomers(){
             return cList;
         }
         
+        //method to retrive customer by Email
+        public Customer getCustomerByEmail(String email){
+            for (Customer customer : cList){
+                if (customer.getEmail() == null ? email == null : customer.getEmail().equals(email)){
+                    return customer;
+                }
+            }
+            return null;
+        }
+        
+        //method to get customer by customer ID
         public Customer getCustomer(int cId){
             return cList.get(cId-1);
         }   
+        
+        //method to update customer after changes to accounts / transfers
         public static void updateCustomer(int cid, Customer customer){
         System.out.println("updating customer.."+customer.getName());
         cList.set(cid-1, customer);

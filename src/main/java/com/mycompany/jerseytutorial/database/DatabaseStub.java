@@ -18,6 +18,8 @@ import java.util.List;
  * @author shane
  */
 public class DatabaseStub {
+    
+    //static lists in place to hold data for banking API
     private static List<Customer> customerList = new ArrayList<>();
     private static List<Account> ac1 = new ArrayList<>();
     private static List<Account> ac2 = new ArrayList<>();
@@ -29,18 +31,20 @@ public class DatabaseStub {
     private static List<Transaction> a3Transactions = new ArrayList<>();
     private static List<Transaction> a4Transactions = new ArrayList<>();
     private static List<Transaction> a5Transactions = new ArrayList<>();
+    //boolean set to true, will be set to false once database is instantiated
     private static boolean init = true;
     
     public DatabaseStub(){
     
+        // seed information for initial customer/account/transaction data
     if (init) {
         
 
-            Transaction t1 = new Transaction (TransactionType.LODGEMENT, 100.00, "20/01/2017","Opening account" );
-            Transaction t2 = new Transaction (TransactionType.LODGEMENT, 150.00, "22/01/2017","Opening account" );
-            Transaction t3 = new Transaction (TransactionType.LODGEMENT, 1200.00, "10/02/2017","Opening account" );
-            Transaction t4 = new Transaction (TransactionType.LODGEMENT, 300.00, "22/05/2017","Opening account" );
-            Transaction t5 = new Transaction (TransactionType.LODGEMENT, 124.69, "17/11/2017","Opening account" );
+            Transaction t1 = new Transaction (TransactionType.LODGEMENT, 100.00, "20/01/2017","Opening account", 100.00 );
+            Transaction t2 = new Transaction (TransactionType.LODGEMENT, 150.00, "22/01/2017","Opening account", 150.00 );
+            Transaction t3 = new Transaction (TransactionType.LODGEMENT, 1200.00, "10/02/2017","Opening account", 1200.00 );
+            Transaction t4 = new Transaction (TransactionType.LODGEMENT, 300.00, "22/05/2017","Opening account", 300.00 );
+            Transaction t5 = new Transaction (TransactionType.LODGEMENT, 124.69, "17/11/2017","Opening account", 124.69 );
             
             a1Transactions.add(t1);
             a2Transactions.add(t2);
@@ -77,25 +81,10 @@ public class DatabaseStub {
     
 
     }
-
+    
+    //get method to return list of customers
     public static List<Customer> getCustomerList() {
         return customerList;
     }
-
-    public static void updateCustomer(int cid, Customer customer){
-        System.out.println("updating customer..");
-        customerList.remove(cid-1);
-        customerList.add(customer);
-    }
     
-//        public static Customer generateNewCustomer(){
-//        Transaction openingTransaction = new Transaction (Transaction.TransactionType.LODGEMENT, 0.00, ""+new Date(),"Opening account" );
-//                List<Transaction> openingTransactionList = new ArrayList();
-//                openingTransactionList.add(openingTransaction);
-//                Account newAccount = new Account ((int)(Math.random() * 100001), (int)(Math.random() * 10001), 0.00,openingTransactionList);
-//                List<Account> openingAccountList = new ArrayList();
-//                openingAccountList.add(newAccount);
-//                Customer newCustomer = new Customer (DatabaseStub.customerList.size()+1, "", "", "", "", openingAccountList);
-//                return newCustomer;
-//    }
 }

@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Customer {
+    //data members
         private int customerID;
 	private String name;
 	private String address;
@@ -24,7 +25,8 @@ public class Customer {
 
     public Customer() {
     }
-
+    
+    // constructor
     public Customer(int customerID, String name, String address, String email, String password, List<Account> accounts) {
         this.customerID = customerID;
         this.name = name;
@@ -33,7 +35,8 @@ public class Customer {
         this.password = password;
         this.accounts = accounts;
     }
-
+    
+    //getters and setters
     public int getCustomerID() {
         return customerID;
     }

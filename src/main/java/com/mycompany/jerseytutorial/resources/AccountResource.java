@@ -26,25 +26,28 @@ public class AccountResource{
 
     private AccountService accountService = new AccountService();
     
-       
+       // Get request returning list of accounts for a customer
         @GET
 	public List<Account> getAccounts(@PathParam("customerId") int cid) {
     	System.out.println("getAllAccountsForCustomer..."+cid);
         return accountService.getAllAccounts(cid);
 	}
         
+        //GET request returning specific account by account number
         @GET
         @Path("/{accountId}")
         public Account getAccount(@PathParam("customerId") int cid, @PathParam("accountId") int aId) {
         return accountService.getAccount(cid, aId);
         }
         
+        //POST request to create a new account
         @POST
         @Path("/create")
         public Account postAccount(@PathParam("customerId") int cid, Account a) {
 	return accountService.createAccount(cid, a);
         }        
         
+        //link path to the transactions resource for a specific account
         @Path("/{accountId}/transaction")
         public TransactionResource getTransactionResource() {
         System.out.println("getting Transaction Resource");

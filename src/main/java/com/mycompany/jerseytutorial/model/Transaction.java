@@ -14,19 +14,32 @@ public class Transaction {
         LODGEMENT, WITHDRAWEL, TRANSFER
     }
     
+    //data members
     private TransactionType transactionType;
     private double amount;
     private String transactionDate;
     private String description;
+    private double postBalance;
 
     public Transaction() {
     }
-
-    public Transaction(TransactionType transactionType, double amount, String transactionDate, String description) {
+    
+    //constructor
+    public Transaction(TransactionType transactionType, double amount, String transactionDate, String description, double postBalance) {
         this.transactionType = transactionType;
         this.amount = amount;
         this.transactionDate = transactionDate;
         this.description = description;
+        this.postBalance = postBalance;
+    }
+    
+    //getters and setters
+    public double getPostBalance() {
+        return postBalance;
+    }
+
+    public void setPostBalance(double postBalance) {
+        this.postBalance = postBalance;
     }
 
 

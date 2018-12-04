@@ -26,25 +26,33 @@ public class CustomerResource {
     
 
     CustomerService customerService = new CustomerService();
-    
+        
+        //Get method returning all customers of bank, suitable for bank staff to use or for debugging
         @GET
         public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
         }
         
+        //POST request to create a new banking customer
         @POST
         @Path("/create")
         public Customer createCustomer(Customer customer){
             return customerService.createCustomer(customer);
         }
-    
+        //GET method to retrieve customer by email
         @GET
-        @Path("/{customerId}")
+        @Path("/getByEmail/{email}")
+        public Customer getCustomerByEmail(@PathParam("email") String email){
+            return customerService.getCustomerByEmail(email);
+        }
+        // GET method to retrieve customer information for a given customerID
+        @GET
+        @Path("/getById/{customerId}")
         public Customer getCustomer(@PathParam("customerId") int cId) {
             return customerService.getCustomer(cId);
         }
    
-   
+        //path linking accounts subresource
         @Path("/{customerId}/accounts")
         public AccountResource getAccountsResource() {
         System.out.println("getting Accounts Resource");

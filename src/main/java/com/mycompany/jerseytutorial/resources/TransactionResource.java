@@ -24,11 +24,14 @@ public class TransactionResource{
 
     private TransactionService transactionService = new TransactionService();
        
+        //POST method for making a transaction, utilizes previous path params and accepts further query params to identify lodgement, withdrawal,
+        // transfer and transfer recipient ID.
         @POST
         public Transaction makeTransaction(@PathParam("customerId") int cid,
                                            @PathParam("accountId") int aid, 
                                            @QueryParam("type") String type,   
-                                           @QueryParam("recipientId") int recipientId,
+                                           @QueryParam("recipientCustId") int recipientCustId,
+                                           @QueryParam("recipientAccountId") int recipientAccId,
                                            Transaction t) {
             System.out.println("making transaction...index : "+cid+" , accountIndex: "+aid+" ,"+type);
        if (null != type) switch (type) {
@@ -40,7 +43,7 @@ public class TransactionResource{
                 return transactionService.makeWithdrawel(cid, aid, t);
             case "transfer":
                 System.out.println("transferring");
-                return transactionService.makeTransfer(cid, aid, recipientId,t);
+                return transactionService.makeTransfer(cid, aid, recipientCustId,recipientAccId,t);
             default:
                 break;
         }
