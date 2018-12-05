@@ -7,7 +7,9 @@ package com.mycompany.jerseytutorial.services;
 import com.mycompany.jerseytutorial.database.DatabaseStub;
 import com.mycompany.jerseytutorial.model.Customer;
 import com.mycompany.jerseytutorial.model.Account;
+import com.mycompany.jerseytutorial.model.Transaction;
 import com.mycompany.jerseytutorial.model.Balance;
+import java.util.ArrayList;
 import java.util.List;
 /**
  *
@@ -60,6 +62,8 @@ public class AccountService {
             System.out.println("attempting to create account...");
             for(Customer customer : cList){
                 if (customer.getCustomerID() == cId){
+                    List<Transaction> newList = new ArrayList();
+                    a.setTransactions(newList);
                 customer.getAccounts().add(a);
                 cList.get(cId-1).setAccounts(customer.getAccounts());
             }
