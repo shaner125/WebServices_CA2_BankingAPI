@@ -5,7 +5,9 @@
  */
 package com.mycompany.jerseytutorial.services;
 import com.mycompany.jerseytutorial.model.Customer;
+import com.mycompany.jerseytutorial.model.Account;
 import com.mycompany.jerseytutorial.database.DatabaseStub;
+import java.util.ArrayList;
 
 
 
@@ -22,7 +24,9 @@ public class CustomerService {
          
         //method to create new customer
         public Customer createCustomer(Customer customer){
-            customer.setCustomerID(cList.size());
+            List<Account> newList = new ArrayList();
+            customer.setCustomerID(cList.size()+1);
+            customer.setAccounts(newList);
             cList.add(customer);
             return customer;
         }
