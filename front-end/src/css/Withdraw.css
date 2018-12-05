@@ -1,0 +1,12 @@
+.WithdrawtContainer{
+    text-align: center;
+    width: 500px;
+    height: 200px;
+    position:absolute; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+
+    display: inline-block;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}

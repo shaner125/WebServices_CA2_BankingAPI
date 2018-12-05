@@ -1,0 +1,31 @@
+.RegisterContainer {
+    text-align: center;
+    width: 290px;
+    height: 230px;
+    position:absolute; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+
+    display: inline-block;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.RegisterContainer:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.RegisterTileLabel {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 35px;
+}
+
+.RegisterContent {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.RegisterLabel {
+    margin-right: 10px;
+}

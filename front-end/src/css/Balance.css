@@ -1,0 +1,20 @@
+.BalanceText {
+    display: inline-block;
+    color: blue;
+    font-size: 16px;
+}
+
+.AccountTitle {
+    display: inline-block;
+    font-size: 16px;
+    text-align: right;
+    margin-right: 150px;
+}
+
+.BalanceContainer {
+    margin-bottom: 15px;
+}
+
+.BalanceSeg {
+    display: block;
+}
