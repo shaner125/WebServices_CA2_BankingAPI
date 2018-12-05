@@ -28,24 +28,29 @@ public class CustomerResource {
     CustomerService customerService = new CustomerService();
         
         //Get method returning all customers of bank, suitable for bank staff to use or for debugging
+        //e.g. localhost:49000/api/customers
         @GET
         public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
         }
         
         //POST request to create a new banking customer
+        //e.g localhost:49000/api/customers/create
         @POST
         @Path("/create")
         public Customer createCustomer(Customer customer){
             return customerService.createCustomer(customer);
         }
+        
         //GET method to retrieve customer by email
+        //e.g localhost:49000/api/customers/getByEmail/Shane.Ryan@student.ncirl.ie
         @GET
         @Path("/getByEmail/{email}")
         public Customer getCustomerByEmail(@PathParam("email") String email){
             return customerService.getCustomerByEmail(email);
         }
         // GET method to retrieve customer information for a given customerID
+        //e.g localhost:49000/api/customers/getById/1
         @GET
         @Path("/getById/{customerId}")
         public Customer getCustomer(@PathParam("customerId") int cId) {
@@ -53,6 +58,7 @@ public class CustomerResource {
         }
    
         //path linking accounts subresource
+        //e.g localhost:49000/api/customers/1/accounts
         @Path("/{customerId}/accounts")
         public AccountResource getAccountsResource() {
         System.out.println("getting Accounts Resource");

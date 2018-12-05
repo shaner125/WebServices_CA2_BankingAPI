@@ -38,11 +38,16 @@ public class TransactionService {
 //        return tmpList.get(aId-1);
           for (Account account : tmpList){
               if(account.getAccountNumber() == aid){
+                  if (account.getCurrentBalance() - t.getAmount() < 0){
+                      return null;
+                  }
+                  else{
                   double tmpBalance = account.getCurrentBalance() - t.getAmount();
                   account.setCurrentBalance(tmpBalance);
                   account.getTransactions().add(t);
                   t.setPostBalance(tmpBalance);
                   return t;
+                  }
               }
           }
         return null;
@@ -51,9 +56,11 @@ public class TransactionService {
     //method to withdraw transaction from customer account and lodge to recipient account
     public Transaction makeTransfer(int cid, int aid,int recipientCustId, int recipientAccId, Transaction t){
         System.out.println("Transferring "+t.getAmount()+" from "+cid+": "+aid+" to: "+recipientCustId + " :"+recipientAccId);
-        makeWithdrawel(cid,aid,t);
+        if(makeWithdrawel(cid,aid,t) == t){
         makeLodgement(recipientCustId,recipientAccId,t);
         return t;
+        }
+        return null;
     }
     
     }

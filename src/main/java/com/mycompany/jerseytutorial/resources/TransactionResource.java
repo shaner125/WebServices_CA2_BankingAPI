@@ -26,6 +26,9 @@ public class TransactionResource{
        
         //POST method for making a transaction, utilizes previous path params and accepts further query params to identify lodgement, withdrawal,
         // transfer and transfer recipient ID.
+        //e.g localhost:49000/api/customers/1/accounts/11111/transaction?type=lodge
+        //e.g localhost:49000/api/customers/1/accounts/11111/transaction?type=withdraw
+        //e.g localhost:49000/api/customers/1/accounts/11111/transaction?type=transfer&recipientCustId=2&recipientAccountId=22222
         @POST
         public Transaction makeTransaction(@PathParam("customerId") int cid,
                                            @PathParam("accountId") int aid, 

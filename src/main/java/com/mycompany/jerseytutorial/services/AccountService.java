@@ -7,8 +7,7 @@ package com.mycompany.jerseytutorial.services;
 import com.mycompany.jerseytutorial.database.DatabaseStub;
 import com.mycompany.jerseytutorial.model.Customer;
 import com.mycompany.jerseytutorial.model.Account;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.mycompany.jerseytutorial.model.Balance;
 import java.util.List;
 /**
  *
@@ -36,9 +35,28 @@ public class AccountService {
           }
           return null;
     }
+    
+    //returns balance of specified account
+    public Balance getBalance(int cid,int aid){
+        Balance newBalance = new Balance();
+        List<Account> tmpList = cList.get(cid-1).getAccounts();
+          for (Account account : tmpList){
+              if(account.getAccountNumber() == aid){
+                  newBalance.setBalance(account.getCurrentBalance());
+                  System.out.println(newBalance.getBalance());
+                  return newBalance;
+              }
+          }
+          return newBalance;
+    }
+    
         
         // accepts a JSON account object and adds it to a customers account
-        public Account createAccount(int cId, Account a) {
+        public Account createAccount(int cId) {
+            Account a = new Account();
+            a.setAccountNumber((int)(Math.random()*1001+100000));
+            a.setCurrentBalance(0.0);
+            a.setSortCode((int)(Math.random()*1001+10000));
             System.out.println("attempting to create account...");
             for(Customer customer : cList){
                 if (customer.getCustomerID() == cId){
@@ -50,5 +68,5 @@ public class AccountService {
             return a;
             
         }
-    }
+}
 

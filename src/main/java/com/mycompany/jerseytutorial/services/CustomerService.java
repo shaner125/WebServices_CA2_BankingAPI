@@ -22,6 +22,7 @@ public class CustomerService {
          
         //method to create new customer
         public Customer createCustomer(Customer customer){
+            customer.setCustomerID(cList.size());
             cList.add(customer);
             return customer;
         }

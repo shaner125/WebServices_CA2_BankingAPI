@@ -6,6 +6,7 @@
 package com.mycompany.jerseytutorial.resources;
 import com.mycompany.jerseytutorial.services.AccountService;
 import com.mycompany.jerseytutorial.model.Account;
+import com.mycompany.jerseytutorial.model.Balance;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -26,7 +27,8 @@ public class AccountResource{
 
     private AccountService accountService = new AccountService();
     
-       // Get request returning list of accounts for a customer
+        // Get request returning list of accounts for a customer
+        // e.g //e.g localhost:49000/api/customers/1/accounts
         @GET
 	public List<Account> getAccounts(@PathParam("customerId") int cid) {
     	System.out.println("getAllAccountsForCustomer..."+cid);
@@ -34,6 +36,7 @@ public class AccountResource{
 	}
         
         //GET request returning specific account by account number
+        // e.g //e.g localhost:49000/api/customers/1/accounts/11111
         @GET
         @Path("/{accountId}")
         public Account getAccount(@PathParam("customerId") int cid, @PathParam("accountId") int aId) {
@@ -41,11 +44,20 @@ public class AccountResource{
         }
         
         //POST request to create a new account
+        // e.g //e.g localhost:49000/api/customers/1/accounts/11111/create
         @POST
         @Path("/create")
-        public Account postAccount(@PathParam("customerId") int cid, Account a) {
-	return accountService.createAccount(cid, a);
-        }        
+        public Account postAccount(@PathParam("customerId") int cid) {
+	return accountService.createAccount(cid);
+        }   
+        
+        // e.g //e.g localhost:49000/api/customers/1/accounts/11111/balance
+        @GET
+        @Path("/{accountId}/balance")
+        public Balance getBalance(@PathParam("customerId") int cid, @PathParam("accountId") int aid){
+            System.out.println("getting account balance...");
+            return accountService.getBalance(cid, aid);
+        }
         
         //link path to the transactions resource for a specific account
         @Path("/{accountId}/transaction")
