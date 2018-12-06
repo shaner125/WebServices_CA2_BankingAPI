@@ -16,6 +16,7 @@ public class Transaction {
     
     //data members
     private TransactionType transactionType;
+    private String modifier;
     private double amount;
     private String transactionDate;
     private String description;
@@ -31,6 +32,14 @@ public class Transaction {
         this.transactionDate = transactionDate;
         this.description = description;
         this.postBalance = postBalance;
+    }
+
+    public String getModifier() {
+        return modifier;
+    }
+
+    public void setModifier(String modifier) {
+        this.modifier = modifier;
     }
     
     //getters and setters

@@ -53,8 +53,27 @@ public class AccountService {
     }
     
         
-        // accepts a JSON account object and adds it to a customers account
-        public Account createAccount(int cId) {
+        // creates new current account and adds it to customer profile
+        public Account createCurrentAccount(int cId) {
+            Account a = new Account();
+            a.setAccountNumber((int)(Math.random()*1001+100000));
+            a.setCurrentBalance(0.0);
+            a.setSortCode((int)(Math.random()*1001+10000));
+            System.out.println("attempting to create account...");
+            for(Customer customer : cList){
+                if (customer.getCustomerID() == cId){
+                    List<Transaction> newList = new ArrayList();
+                    a.setTransactions(newList);
+                customer.getAccounts().add(a);
+                cList.get(cId-1).setAccounts(customer.getAccounts());
+            }
+        }
+            System.out.println("Account created"+a.getAccountNumber());
+            return a;
+            
+        }
+        
+        public Account createSavingsAccount(int cId) {
             Account a = new Account();
             a.setAccountNumber((int)(Math.random()*1001+100000));
             a.setCurrentBalance(0.0);

@@ -13,7 +13,14 @@ import java.util.List;
 
 public class Account {
     
+        public enum AccountType {
+        CURRENT, SAVINGS
+    }
+    
+    //data members
+
     // data members
+    private AccountType accountType;
     private int accountNumber;
     private int sortCode;
     private double currentBalance;
@@ -23,12 +30,24 @@ public class Account {
     }
     
     //constructor
-    public Account(int accountNumber, int sortCode, double currentBalance, List<Transaction> transactions) {
+    public Account(AccountType accountType, int accountNumber, int sortCode, double currentBalance, List<Transaction> transactions) {
+        this.accountType = accountType;
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
         this.currentBalance = currentBalance;
         this.transactions = transactions;
     }
+    
+    
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType AccountType) {
+        this.accountType = AccountType;
+    }
+    
+    
     
     //getters and setters
     public int getAccountNumber() {

@@ -24,6 +24,7 @@ public class TransactionService {
               if(account.getAccountNumber() == aid){
                   double tmpBalance = account.getCurrentBalance() + t.getAmount();
                   account.setCurrentBalance(tmpBalance);
+                  t.setModifier("CREDIT");
                   account.getTransactions().add(t);
                   t.setPostBalance(tmpBalance);
                   return t;
@@ -44,6 +45,7 @@ public class TransactionService {
                   else{
                   double tmpBalance = account.getCurrentBalance() - t.getAmount();
                   account.setCurrentBalance(tmpBalance);
+                  t.setModifier("DEBIT");
                   account.getTransactions().add(t);
                   t.setPostBalance(tmpBalance);
                   return t;

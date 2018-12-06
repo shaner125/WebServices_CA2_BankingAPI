@@ -44,11 +44,19 @@ public class AccountResource{
         }
         
         //POST request to create a new account
-        // e.g //e.g localhost:49000/api/customers/1/accounts/11111/create
+        // e.g //e.g localhost:49000/api/customers/1/accounts/11111/create/current
         @POST
-        @Path("/create")
-        public Account postAccount(@PathParam("customerId") int cid) {
-	return accountService.createAccount(cid);
+        @Path("/create/current")
+        public Account postCurrentAccount(@PathParam("customerId") int cid) {
+	return accountService.createCurrentAccount(cid);
+        }   
+        
+         //POST request to create a new account
+        // e.g //e.g localhost:49000/api/customers/1/accounts/11111/create/savings
+        @POST
+        @Path("/create/savings")
+        public Account postSavingsAccount(@PathParam("customerId") int cid) {
+	return accountService.createSavingsAccount(cid);
         }   
         
         // e.g //e.g localhost:49000/api/customers/1/accounts/11111/balance
