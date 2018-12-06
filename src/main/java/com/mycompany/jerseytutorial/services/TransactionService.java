@@ -15,7 +15,19 @@ import java.util.List;
  */
 public class TransactionService {
     private List<Customer> cList = DatabaseStub.getCustomerList();
- 
+    
+    public List<Transaction> getAllTransactions(int cid, int aid){
+        List<Account> tmpList = cList.get(cid-1).getAccounts();
+//        return tmpList.get(aId-1);
+          for (Account account : tmpList){
+              if(account.getAccountNumber() == aid){
+                  return account.getTransactions();
+              }
+          }
+          return null;
+    }
+    
+    
     //method to lodge transaction to customer account by account number
     public Transaction makeLodgement(int cid, int aid, Transaction t){
         List<Account> tmpList = cList.get(cid-1).getAccounts();
@@ -34,7 +46,7 @@ public class TransactionService {
     }
     
     //method to withdraw transaction from account by account number
-    public Transaction makeWithdrawel(int cid, int aid, Transaction t){
+    public Transaction makeWithdrawal(int cid, int aid, Transaction t){
         List<Account> tmpList = cList.get(cid-1).getAccounts();
 //        return tmpList.get(aId-1);
           for (Account account : tmpList){
@@ -58,7 +70,7 @@ public class TransactionService {
     //method to withdraw transaction from customer account and lodge to recipient account
     public Transaction makeTransfer(int cid, int aid,int recipientCustId, int recipientAccId, Transaction t){
         System.out.println("Transferring "+t.getAmount()+" from "+cid+": "+aid+" to: "+recipientCustId + " :"+recipientAccId);
-        if(makeWithdrawel(cid,aid,t) == t){
+        if(makeWithdrawal(cid,aid,t) == t){
         makeLodgement(recipientCustId,recipientAccId,t);
         return t;
         }

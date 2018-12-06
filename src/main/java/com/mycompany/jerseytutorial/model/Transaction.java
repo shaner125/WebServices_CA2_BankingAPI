@@ -11,7 +11,7 @@ package com.mycompany.jerseytutorial.model;
  */
 public class Transaction {
     public enum TransactionType {
-        LODGEMENT, WITHDRAWEL, TRANSFER
+        LODGEMENT, WITHDRAWAL, TRANSFER
     }
     
     //data members
