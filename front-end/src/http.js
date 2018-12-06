@@ -6,10 +6,12 @@ export default function httpPost(targetURL, object) {
 }
 
 
-export function httpGet(targetURL) {
+export function httpGet(targetURL, callback) {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', targetURL, false);
+  xhr.open('GET', targetURL, true);
   xhr.send();
 
-  return JSON.parse(xhr.responseText);
+ xhr.onloadend = () => {
+     callback(JSON.parse(xhr.response));
+ }
 }

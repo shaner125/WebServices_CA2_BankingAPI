@@ -5,7 +5,9 @@ import './css/Balance.css';
 class Balance extends Component {
   constructor(props) {
     super(props);
-    this.customer = props.customer;
+    this.customer = props.customer();
+    this.renderHome = props.renderHome;
+    this.setAccounts = this.setAccounts.bind(this);
     this.accounts = [
       {
         title: "Account No. 1",
@@ -17,7 +19,7 @@ class Balance extends Component {
       }
     ];
     this.balanceFunc = () => {
-      // this.getAccounts();
+      this.getAccounts();
     };
     this.displayAccounts = () => {
       return this.accounts.map((account, index) => {
@@ -26,16 +28,20 @@ class Balance extends Component {
     };
   }
 
+  setAccounts(response) {
+    this.accounts = response;
+  }
+
   getAccounts() {
-    this.accounts = httpGet(`http://localhost:49000/api/customer/${this.customer.customerID}/accounts/balance`);
+    httpGet(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts/balance`, this.setAccounts);
   }
 
   getBalance() {
-    this.accounts = httpGet(`http://localhost:49000/api/customer/${this.customer.customerID}/accounts/balance`);
+    this.accounts = httpGet(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts/balance`);
   }
 
   render() {
-    this.balanceFunc();
+    // this.balanceFunc();
     return (
       <div className="BalanceContainer">
         {this.displayAccounts()}

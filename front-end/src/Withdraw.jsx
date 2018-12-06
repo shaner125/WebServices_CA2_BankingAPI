@@ -6,7 +6,7 @@ import NavBar from './navBar';
 class Withdraw extends Component {
   constructor(props){
     super(props);
-    this.customer = props.customer;
+    this.customer = props.customer();
     this.renderHome = props.renderHome;
     this.buttonTitle = props.btnTitle;
     this.withdrawFunc = () => {
@@ -38,7 +38,7 @@ class Withdraw extends Component {
       transactionDate: this.makeDate(),
       transactionType: "WITHDRAWAL"
     };
-    httpPost(`http://localhost:49000/api/customer/${this.customer.customerID}/accounts/{accountID}/transaction?type=withdraw`, customerDetails);
+    httpPost(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts/${this.state.accountNum}/transaction?type=withdraw`, customerDetails);
     console.log(customerDetails);
   }
 
@@ -52,8 +52,8 @@ class Withdraw extends Component {
     return (
       <div className="InputContainer">
         <NavBar routes={{ home: this.renderHome }}/>
-        <span className="AppTileLabel">Bank API</span>
-        <span>Amount To Withdraw: </span><input id="amount" onChange={this.handleChange.bind(this)} className="Withdraw" ></input>
+        <p className="WithdrawLabel">Account From: <input id="accountNum" onChange={this.handleChange.bind(this)} className="Withdraw" ></input></p>
+        <p className="WithdrawLabel">Amount: <input id="amount" onChange={this.handleChange.bind(this)} className="Withdraw" ></input></p>
         <button onClick={this.withdrawFunc}>{this.buttonTitle}</button>
       </div>
     );

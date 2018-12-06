@@ -5,18 +5,22 @@ import './css/Register.css';
 class Register extends Component {
   constructor(props){
     super(props);
-    this.renderLogin = props.renderLogin;
+    this.renderLogin = props.renderLodge;
     this.buttonTitle = props.btnTitle;
+    this.register = this.register.bind(this);
     this.registerFunc = () => {
-      this.createCustomer();
-      const customer = httpGet(`http://localhost:49000/api/getByEmail/${this.state.email}`);
-      this.createAccount(customer);
-      this.renderLogin();
+     this.register();
     };
+  }
+  
+  register() {
+    this.createCustomer();
+    const customer = httpGet(`http://localhost:49000/api/customers/getByEmail/${this.state.email}`, this.createAccount);
+    this.renderLogin();
   }
 
   createAccount(customer) {
-    httpPost(`http://localhost:49000/api/customer/${customer.customerID}/accounts/create`, {});
+    httpPost(`http://localhost:49000/api/customers/${customer.customerID}/accounts/create`, {});
   }
 
   createCustomer() {
@@ -26,7 +30,7 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    httpPost('http://localhost:49000/api/customer/create', customerDetails);
+    httpPost('http://localhost:49000/api/customers/create', customerDetails);
     console.log(customerDetails);
   }
 

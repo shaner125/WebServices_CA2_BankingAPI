@@ -6,7 +6,7 @@ import NavBar from './navBar';
 class Transfer extends Component {
   constructor(props){
     super(props);
-    this.customer = props.customer;
+    this.customer = props.customer();
     this.renderHome = props.renderHome;
     this.buttonTitle = props.btnTitle;
     this.transferFunc = () => {
@@ -38,7 +38,7 @@ class Transfer extends Component {
       transactionDate: this.makeDate(),
       transactionType: "TRANSFERAL"
     };
-    httpPost(`http://localhost:49000/api/customer/${this.customer.customerID}/accounts/${this.customer.accountID}/transaction?type=transfer`, customerDetails);
+    httpPost(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts/1/transaction?type=transfer`, customerDetails);
     console.log(customerDetails);
   }
 
@@ -53,7 +53,8 @@ class Transfer extends Component {
       <div className="InputContainer">
         <NavBar routes={{ home: this.renderHome }}/>
         <span className="AppTileLabel">Bank API</span>
-        <span>To: </span><input id="amount" onChange={this.handleChange.bind(this)} className="Transfert" ></input>
+        <p className="TransferLabel">Account From: <input id="accountNum" onChange={this.handleChange.bind(this)} className="Transfer" ></input></p>
+        <p className="TransferLabel">Amount: <input id="amount" onChange={this.handleChange.bind(this)} className="Transfer" ></input></p>
         <button onClick={this.transferFunc}>{this.buttonTitle}</button>
       </div>
     );

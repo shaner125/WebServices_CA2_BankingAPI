@@ -5,7 +5,7 @@ import NavBar from './navBar';
 class Create extends Component {
   constructor(props){
     super(props);
-    this.renderHome = props.renderLogin;
+    this.renderHome = props.renderLodge;
     this.buttonTitle = props.btnTitle;
   }
   render() {

@@ -6,7 +6,7 @@ class Result extends Component {
   constructor(props){
     super(props);
     this.renderCreate = props.renderWithdraw;
-    this.renderHome = props.renderLogin;
+    this.renderHome = props.renderLodge;
   }
   render() {
     return (

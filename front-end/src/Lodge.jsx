@@ -6,7 +6,7 @@ import NavBar from './navBar';
 class Lodge extends Component {
   constructor(props){
     super(props);
-    this.customer = props.customer;
+    this.customer = props.customer();
     this.renderHome = props.renderHome;
     this.buttonTitle = props.btnTitle;
     this.lodgeFunc = () => {
@@ -38,7 +38,7 @@ class Lodge extends Component {
       transactionDate: this.makeDate(),
       transactionType: "LODGEMENT"
     };
-    httpPost(`http://localhost:49000/api/customer/${this.customer.customerID}/accounts/{accountID}/transaction?type=lodge`, customerDetails);
+    httpPost(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts/${this.state.accountNum}/transaction?type=lodge`, customerDetails);
     console.log(customerDetails);
   }
 
@@ -54,7 +54,8 @@ class Lodge extends Component {
       <div className="InputContainer">
         <NavBar routes={{ home: this.renderHome }}/>
         <span className="AppTileLabel">Bank API</span>
-        <input id="amount" onChange={this.handleChange.bind(this)} className="Lodge" ></input>
+        <p className="LodgeLable"> Account No: <input id="accountNum" onChange={this.handleChange.bind(this)} className="Lodge" ></input> </p>
+        <p className="LodgeLable"> Ammount to Lodge: <input id="amount" onChange={this.handleChange.bind(this)} className="Lodge" ></input></p>
         <button onClick={this.lodgeFunc}>{this.buttonTitle}</button>
       </div>
     );

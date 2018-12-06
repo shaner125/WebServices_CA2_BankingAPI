@@ -8,17 +8,12 @@ class Login extends Component {
     this.setEmail = props.setEmail;
     this.renderHome = props.renderHome;
     this.buttonTitle = props.btnTitle;
+    this.renderRegister = props.renderRegister;
     this.loginFunc = () => {
-      this.login();
       this.setEmail(this.state.email);
       this.renderHome();
     };
   }
-
-  login() {
-    // httpGet(`http://localhost:49000/api/customers/getByEmail/${this.state.email}`);
-  }
-
   handleChange(event) {
     const stateObj = {};
     stateObj[event.target.id] = event.target.value;
@@ -35,7 +30,7 @@ class Login extends Component {
           <br />
           <br />
         </div>
-        <button onClick={this.loginFunc}>{this.buttonTitle}</button>
+        <button onClick={this.loginFunc}>{this.buttonTitle}</button> <button onClick={this.renderRegister}>Register</button>
       </div>
     );
   }
