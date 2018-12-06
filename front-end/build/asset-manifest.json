@@ -1,0 +1,18 @@
+{
+  "main.css": "./static/css/main.51d0b84f.chunk.css",
+  "main.js": "./static/js/main.fdd95382.chunk.js",
+  "main.js.map": "./static/js/main.fdd95382.chunk.js.map",
+  "static/js/1.2ebf1f91.chunk.js": "./static/js/1.2ebf1f91.chunk.js",
+  "static/js/1.2ebf1f91.chunk.js.map": "./static/js/1.2ebf1f91.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.4a686d48.js",
+  "runtime~main.js.map": "./static/js/runtime~main.4a686d48.js.map",
+  "static/media/add.svg": "./static/media/add.423c9a11.svg",
+  "static/media/lodgenent.svg": "./static/media/lodgenent.8d2e6535.svg",
+  "static/media/transfer.svg": "./static/media/transfer.1c73136a.svg",
+  "static/media/homeButton.svg": "./static/media/homeButton.706590e1.svg",
+  "static/media/withdraw.svg": "./static/media/withdraw.7d9d8c4a.svg",
+  "static/css/main.51d0b84f.chunk.css.map": "./static/css/main.51d0b84f.chunk.css.map",
+  "index.html": "./index.html",
+  "precache-manifest.3e45cdbfdae18452f594fccaf1afd8f9.js": "./precache-manifest.3e45cdbfdae18452f594fccaf1afd8f9.js",
+  "service-worker.js": "./service-worker.js"
+}
