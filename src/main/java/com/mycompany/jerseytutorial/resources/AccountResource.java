@@ -44,7 +44,7 @@ public class AccountResource{
         }
         
         //POST request to create a new account
-        // e.g //e.g localhost:49000/api/customers/1/accounts/11111/create/current
+        // e.g //e.g localhost:49000/api/customers/1/accounts/create/current
         @POST
         @Path("/create/current")
         public Account postCurrentAccount(@PathParam("customerId") int cid) {
@@ -52,7 +52,7 @@ public class AccountResource{
         }   
         
         //POST request to create a new account
-        //e.g localhost:49000/api/customers/1/accounts/11111/create/savings
+        //e.g localhost:49000/api/customers/1/accounts/create/savings
         @POST
         @Path("/create/savings")
         public Account postSavingsAccount(@PathParam("customerId") int cid) {
