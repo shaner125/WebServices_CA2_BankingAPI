@@ -59,6 +59,12 @@ public class AccountResource{
 	return accountService.createSavingsAccount(cid);
         }   
         
+        @GET
+        @Path("/remove/{accountId}")
+        public Account removeAccount(@PathParam("accountId") int aid, @PathParam("customerId") int cid){
+            return accountService.removeAccount(aid, cid);
+        }
+        
         // e.g //e.g localhost:49000/api/customers/1/accounts/11111/balance
         @GET
         @Path("/{accountId}/balance")

@@ -46,6 +46,11 @@ public class CustomerService {
             return null;
         }
         
+        //method to remove customer by customer ID
+        public Customer removeCustomerById(int cid){
+            return cList.remove(cid-1);
+        }
+        
         //method to get customer by customer ID
         public Customer getCustomer(int cId){
             return cList.get(cId-1);
