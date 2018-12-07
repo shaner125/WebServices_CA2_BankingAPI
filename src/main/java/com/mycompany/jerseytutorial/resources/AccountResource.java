@@ -9,13 +9,13 @@ import com.mycompany.jerseytutorial.model.Account;
 import com.mycompany.jerseytutorial.model.Balance;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.QueryParam;
 /**
  *
  * @author shane
@@ -51,15 +51,16 @@ public class AccountResource{
 	return accountService.createCurrentAccount(cid);
         }   
         
-         //POST request to create a new account
-        // e.g //e.g localhost:49000/api/customers/1/accounts/11111/create/savings
+        //POST request to create a new account
+        //e.g localhost:49000/api/customers/1/accounts/11111/create/savings
         @POST
         @Path("/create/savings")
         public Account postSavingsAccount(@PathParam("customerId") int cid) {
 	return accountService.createSavingsAccount(cid);
         }   
         
-        @GET
+        // e.g. localhost:49000/api/customers/1/remove/11111
+        @DELETE
         @Path("/remove/{accountId}")
         public Account removeAccount(@PathParam("accountId") int aid, @PathParam("customerId") int cid){
             return accountService.removeAccount(aid, cid);

@@ -8,8 +8,8 @@ import com.mycompany.jerseytutorial.model.Customer;
 import com.mycompany.jerseytutorial.services.CustomerService;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -44,7 +44,7 @@ public class CustomerResource {
             return customerService.createCustomer(customer);
         }
         
-        @GET
+        @DELETE
         @Path("/remove/{customerId}")
         public Customer removeCustomerById(@PathParam("customerId") int cid){
             return customerService.removeCustomerById(cid);
@@ -63,6 +63,14 @@ public class CustomerResource {
         @Path("/getById/{customerId}")
         public Customer getCustomer(@PathParam("customerId") int cId) {
             return customerService.getCustomer(cId);
+        }
+        
+        //update customer address
+        //e.g. localhost:49000/api/customers/1/changeAddress
+        @PUT
+        @Path("/{customerId}/changeAddress")
+        public Customer changeCustomerAddress(@PathParam("customerId") int cId, Customer c) {
+            return customerService.changeCustomerAddress(cId, c);
         }
    
         //path linking accounts subresource

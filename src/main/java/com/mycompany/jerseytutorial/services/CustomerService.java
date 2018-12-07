@@ -56,6 +56,12 @@ public class CustomerService {
             return cList.get(cId-1);
         }   
         
+        //method to change customer address
+        public Customer changeCustomerAddress(int cid, Customer c){
+            cList.get(cid-1).setAddress(c.getAddress());
+            return c;
+        }
+        
         //method to update customer after changes to accounts / transfers
         public static void updateCustomer(int cid, Customer customer){
         System.out.println("updating customer.."+customer.getName());

@@ -74,10 +74,10 @@ public class AccountService {
         }
         
         //method to remove account from account list
-        public Account removeAccount(int aid, int cid){
+        public Account removeAccount(int aid,int cid){
             for (Customer customer : cList){
                 if (customer.getCustomerID() == cid){
-                    for (int i = 0;i<customer.getAccounts().size()-1; i++){
+                    for (int i = 0;i<customer.getAccounts().size(); i++){
                             if (customer.getAccounts().get(i).getAccountNumber() == aid){
                                 return customer.getAccounts().remove(i);
                         }
