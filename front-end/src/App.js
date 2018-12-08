@@ -66,6 +66,10 @@ class App extends Component {
     this.setState({email: email});
   }
 
+  setScreen(screen) {
+        this.setState({screen});
+  }
+
   render() {
     return (
       <div className="App">

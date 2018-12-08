@@ -38,7 +38,7 @@ class Transfer extends Component {
       transactionDate: this.makeDate(),
       transactionType: "TRANSFERAL"
     };
-    httpPost(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts/1/transaction?type=transfer`, customerDetails);
+    httpPost(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts/${this.state.accountNum}/transaction?type=transfer&recipientCustId=${this.state.custID}&recipientAccountId=${this.state.actID}`, customerDetails);
     console.log(customerDetails);
   }
 
@@ -50,11 +50,13 @@ class Transfer extends Component {
 
   render() {
     return (
-      <div className="InputContainer">
+      <div className="TransferContainer">
         <NavBar routes={{ home: this.renderHome }}/>
         <span className="AppTileLabel">Bank API</span>
-        <p className="TransferLabel">Account From: <input id="accountNum" onChange={this.handleChange.bind(this)} className="Transfer" ></input></p>
+        <p className="TransferLabel">Account ID From: <input id="accountNum" onChange={this.handleChange.bind(this)} className="Transfer" ></input></p>
         <p className="TransferLabel">Amount: <input id="amount" onChange={this.handleChange.bind(this)} className="Transfer" ></input></p>
+        <p className="TransferLabel">Customer ID To: <input id="custID" onChange={this.handleChange.bind(this)} className="Transfer" ></input></p>
+        <p className="TransferLabel">Account ID To: <input id="actID" onChange={this.handleChange.bind(this)} className="Transfer" ></input></p>
         <button onClick={this.transferFunc}>{this.buttonTitle}</button>
       </div>
     );

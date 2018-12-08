@@ -11,7 +11,15 @@ export function httpGet(targetURL, callback) {
   xhr.open('GET', targetURL, true);
   xhr.send();
 
- xhr.onloadend = () => {
-     callback(JSON.parse(xhr.response));
- }
+  if (callback) {
+      xhr.onloadend = () => {
+          callback(JSON.parse(xhr.response));
+      }
+  }
+
 }
+ export function httpDelete(targetURL) {
+     const xhr = new XMLHttpRequest();
+     xhr.open('DELETE', targetURL, true);
+     xhr.send();
+ }

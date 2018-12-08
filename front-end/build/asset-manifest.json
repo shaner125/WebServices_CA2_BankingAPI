@@ -1,18 +1,36 @@
 {
+<<<<<<< HEAD
+  "main.css": "./static/css/main.a9916043.chunk.css",
+  "main.js": "./static/js/main.b3dd0023.chunk.js",
+  "main.js.map": "./static/js/main.b3dd0023.chunk.js.map",
+  "static/js/1.efc333ee.chunk.js": "./static/js/1.efc333ee.chunk.js",
+  "static/js/1.efc333ee.chunk.js.map": "./static/js/1.efc333ee.chunk.js.map",
+=======
   "main.css": "./static/css/main.9b487bd6.chunk.css",
   "main.js": "./static/js/main.34ef6407.chunk.js",
   "main.js.map": "./static/js/main.34ef6407.chunk.js.map",
   "static/js/1.e477a84a.chunk.js": "./static/js/1.e477a84a.chunk.js",
   "static/js/1.e477a84a.chunk.js.map": "./static/js/1.e477a84a.chunk.js.map",
+>>>>>>> 8dba6bf3af63a4c375df497386d0574ebade29bb
   "runtime~main.js": "./static/js/runtime~main.4a686d48.js",
   "runtime~main.js.map": "./static/js/runtime~main.4a686d48.js.map",
   "static/media/add.svg": "./static/media/add.121fb69a.svg",
   "static/media/lodgenent.svg": "./static/media/lodgenent.6b1dbb74.svg",
+<<<<<<< HEAD
+  "static/media/balance.svg": "./static/media/balance.754f6552.svg",
+  "static/media/transfer.svg": "./static/media/transfer.3d7928a9.svg",
+  "static/media/homeButton.svg": "./static/media/homeButton.5924881c.svg",
+  "static/media/withdraw.svg": "./static/media/withdraw.308f1ad0.svg",
+  "static/css/main.a9916043.chunk.css.map": "./static/css/main.a9916043.chunk.css.map",
+  "index.html": "./index.html",
+  "precache-manifest.d169b8ec31c99a4fe863de59ff4059f5.js": "./precache-manifest.d169b8ec31c99a4fe863de59ff4059f5.js",
+=======
   "static/media/transfer.svg": "./static/media/transfer.3d7928a9.svg",
   "static/media/homeButton.svg": "./static/media/homeButton.5924881c.svg",
   "static/media/withdraw.svg": "./static/media/withdraw.308f1ad0.svg",
   "static/css/main.9b487bd6.chunk.css.map": "./static/css/main.9b487bd6.chunk.css.map",
   "index.html": "./index.html",
   "precache-manifest.8d7864b11e9fc5d2c9bbede129a612a8.js": "./precache-manifest.8d7864b11e9fc5d2c9bbede129a612a8.js",
+>>>>>>> 8dba6bf3af63a4c375df497386d0574ebade29bb
   "service-worker.js": "./service-worker.js"
 }

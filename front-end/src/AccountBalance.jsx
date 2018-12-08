@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { httpGet, httpDelete } from './http';
+import { httpGet } from './http';
 import './css/Balance.css';
 import NavBar from "./navBar";
 
@@ -8,7 +8,6 @@ class Balance extends Component {
     super(props);
     this.customer = props.customer();
     this.renderHome = props.renderHome;
-    this.deleteAccount = this.deleteAccount.bind(this);
     this.setAccounts = this.setAccounts.bind(this);
     this.accounts = [
       {
@@ -24,9 +23,14 @@ class Balance extends Component {
     this.balanceFunc = () => {
       this.getAccounts();
     };
+    this.renderTransactions = (index) => {
+        return this.state.accounts[index].transactions.map((account, index) => {
+            return <span key={index} className="BalanceSeg"><span className="AccountTitle">{account.amount}: </span><span className="BalanceText">{account.description}</span></span>;
+        })
+    };
     this.displayAccounts = () => {
       return this.state.accounts.map((account, index) => {
-          return <span key={index} onClick={ () => { this.renderTransactions(index) } } className="BalanceSeg"><span className="AccountTitle">{account.accountNumber}: </span><span className="BalanceText">{account.currentBalance}</span></span>;
+        this.renderTransactions(index);
       })
     };
   }
@@ -39,21 +43,8 @@ class Balance extends Component {
     httpGet(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts`, this.setAccounts);
   }
 
-  deleteAccount() {
-    httpDelete(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts`, this.setAccounts);
-  }
-
   getBalance() {
     this.accounts = httpGet(`http://localhost:49000/api/customers/${this.customer.customerID}/accounts/balance`);
-  }
-
-  renderTransactions(index) {
-      let s = "";
-      for (let i = 0; i < this.state.accounts[index].transactions.length; i+=1) {
-          const t = this.state.accounts[index].transactions[i];
-          s += "Amount: " + t.amount + " Type: " + t.description + " - " + t.modifier + " Balance: " + t.postBalance + "\n";
-      }
-      alert(s);
   }
 
   render() {

@@ -27,3 +27,12 @@
 .BalanceSeg {
     display: block;
 }
+
+.AccountNumHeader{
+    margin-right: 50px;
+    font-weight: bold;
+}
+
+.BalanceHeader {
+    font-weight: bold;
+}

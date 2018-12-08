@@ -5,7 +5,7 @@ import './css/Register.css';
 class Register extends Component {
   constructor(props){
     super(props);
-    this.renderLogin = props.renderLodge;
+    this.renderLogin = props.renderLogin;
     this.buttonTitle = props.btnTitle;
     this.register = this.register.bind(this);
     this.registerFunc = () => {
@@ -15,12 +15,12 @@ class Register extends Component {
   
   register() {
     this.createCustomer();
-    const customer = httpGet(`http://localhost:49000/api/customers/getByEmail/${this.state.email}`, this.createAccount);
+    httpGet(`http://localhost:49000/api/customers/getByEmail/${this.state.email}`);
     this.renderLogin();
   }
 
   createAccount(customer) {
-    httpPost(`http://localhost:49000/api/customers/${customer.customerID}/accounts/create`, {});
+    httpPost(`http://localhost:49000/api/customers/${customer.customerID}/accounts/create/current`, {});
   }
 
   createCustomer() {
